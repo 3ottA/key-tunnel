@@ -7,7 +7,12 @@ if [[ $# -ne 1 ]]; then
 fi
 
 receiver="$1"
+if [[ "$receiver" != /* ]]; then
+  receiver="$(pwd)/$receiver"
+fi
 test -f "$receiver"
+script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "$script_dir"
 supported_ydotool="1.0.4"
 if ! command -v ydotoold >/dev/null 2>&1; then
   echo "ydotoold was not found in PATH" >&2
