@@ -1,4 +1,6 @@
 /target/
+config.local.toml
+ssh-probe-config.tmp
 *.log
 *.status.json
 .idea/

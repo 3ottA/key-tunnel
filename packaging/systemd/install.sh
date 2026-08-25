@@ -43,6 +43,7 @@ sed "s/__REMOTE_INPUT_GID__/$remote_input_gid/g" \
   remote-input-ydotoold.service > /etc/systemd/system/remote-input-ydotoold.service
 chmod 0644 /etc/systemd/system/remote-input-ydotoold.service
 systemctl daemon-reload
-systemctl enable --now remote-input-ydotoold.service
+systemctl enable remote-input-ydotoold.service
+systemctl restart remote-input-ydotoold.service
 echo "Installed receiver and ydotoold unit. Add the SSH user to group 'remote-input',"
 echo "install the restricted authorized_keys entry, then verify after reboot."
