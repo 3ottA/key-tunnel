@@ -7,6 +7,8 @@ Type=simple
 ExecStart=/usr/bin/ydotoold --socket-path=/run/remote-input-bridge/ydotool.sock --socket-perm=0660 --socket-own=0:remote-input
 RuntimeDirectory=remote-input-bridge
 RuntimeDirectoryMode=0750
+ExecStartPre=/usr/bin/chown root:remote-input /run/remote-input-bridge
+ExecStartPre=/usr/bin/chmod 0750 /run/remote-input-bridge
 Restart=always
 RestartSec=3
 NoNewPrivileges=yes

@@ -9,9 +9,23 @@ fi
 receiver="$1"
 test -f "$receiver"
 supported_ydotool="1.0.4"
-actual_ydotool="$(ydotoold --version 2>&1 | head -n 1)"
-if [[ "$actual_ydotool" != *"$supported_ydotool"* ]]; then
-  echo "unsupported ydotoold: '$actual_ydotool' (expected $supported_ydotool)" >&2
+if ! command -v ydotoold >/dev/null 2>&1; then
+  echo "ydotoold was not found in PATH" >&2
+  exit 1
+fi
+
+# Arch's ydotoold does not implement --version; it prints "unknown".
+# Validate the package version instead, ignoring the Arch package revision
+# (for example, 1.0.4-2 has upstream version 1.0.4).
+if command -v pacman >/dev/null 2>&1; then
+  installed_ydotool="$(pacman -Q ydotool 2>/dev/null | awk 'NR == 1 { print $2 }')"
+  actual_ydotool="${installed_ydotool%%-*}"
+else
+  actual_ydotool="$(ydotoold --version 2>&1 | head -n 1)"
+fi
+if [[ "$actual_ydotool" != "$supported_ydotool" ]]; then
+  echo "unsupported ydotoold: '$actual_ydotool' (expected package version $supported_ydotool)" >&2
+  echo "check with: pacman -Qi ydotool" >&2
   exit 1
 fi
 getent group remote-input >/dev/null || groupadd --system remote-input

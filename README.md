@@ -31,7 +31,7 @@ En Arch/Omarchy:
 cargo build --release -p remote-input-receiver
 ```
 
-El adaptador de `ydotoold` está fijado a **ydotool 1.0.4** y al ABI Linux x86_64 little-endian de 24 bytes. El instalador rechaza otra versión y el receptor falla de forma segura en otra arquitectura. Hay que repetir la prueba de compatibilidad antes de cambiar ese pin.
+El adaptador de `ydotoold` está fijado a **ydotool 1.0.4** y al ABI Linux x86_64 little-endian de 24 bytes. En Arch, el instalador valida la versión del paquete con `pacman` porque el binario no implementa `ydotoold --version`. El instalador rechaza otra versión y el receptor falla de forma segura en otra arquitectura. Hay que repetir la prueba de compatibilidad antes de cambiar ese pin.
 
 ## Configurar Windows
 
