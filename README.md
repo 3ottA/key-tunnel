@@ -70,7 +70,7 @@ systemctl status remote-input-ydotoold
 stat -c '%a %U %G' /run/remote-input-bridge/ydotool.sock
 ```
 
-El socket esperado es `0660 root:remote-input`. Reiniciar ambos equipos antes de considerar terminado el despliegue.
+El socket esperado es `0660 root:remote-input`; el directorio padre debe permitir travesía al usuario del puente aunque permanezca como `root:root`. Reiniciar ambos equipos antes de considerar terminado el despliegue.
 
 ### Instalación sin root en una sesión Omarchy existente
 
