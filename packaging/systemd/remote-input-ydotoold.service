@@ -7,8 +7,7 @@ Type=simple
 ExecStart=/usr/bin/ydotoold --socket-path=/run/remote-input-bridge/ydotool.sock --socket-perm=0660 --socket-own=0:__REMOTE_INPUT_GID__
 RuntimeDirectory=remote-input-bridge
 RuntimeDirectoryMode=0751
-ExecStartPost=/usr/bin/chown root:remote-input /run/remote-input-bridge/ydotool.sock
-ExecStartPost=/usr/bin/chmod 0660 /run/remote-input-bridge/ydotool.sock
+ExecStartPost=/usr/local/libexec/remote-input-bridge/fix-socket-permissions.sh
 Restart=always
 RestartSec=3
 NoNewPrivileges=yes

@@ -38,6 +38,7 @@ remote_input_gid="$(getent group remote-input | cut -d: -f3)"
 test -n "$remote_input_gid"
 install -d -m 0755 /usr/local/libexec/remote-input-bridge /etc/remote-input-bridge
 install -m 0755 "$receiver" /usr/local/libexec/remote-input-bridge/remote-input-receiver
+install -m 0755 fix-socket-permissions.sh /usr/local/libexec/remote-input-bridge/fix-socket-permissions.sh
 install -m 0644 receiver.toml /etc/remote-input-bridge/receiver.toml
 sed "s/__REMOTE_INPUT_GID__/$remote_input_gid/g" \
   remote-input-ydotoold.service > /etc/systemd/system/remote-input-ydotoold.service
