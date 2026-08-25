@@ -4,7 +4,7 @@ After=systemd-udev-settle.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/ydotoold --socket-path=/run/remote-input-bridge/ydotool.sock --socket-perm=0660 --socket-own=0:remote-input
+ExecStart=/usr/bin/ydotoold --socket-path=/run/remote-input-bridge/ydotool.sock --socket-perm=0660 --socket-own=0:__REMOTE_INPUT_GID__
 RuntimeDirectory=remote-input-bridge
 RuntimeDirectoryMode=0751
 Restart=always

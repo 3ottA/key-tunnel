@@ -29,10 +29,14 @@ if [[ "$actual_ydotool" != "$supported_ydotool" ]]; then
   exit 1
 fi
 getent group remote-input >/dev/null || groupadd --system remote-input
+remote_input_gid="$(getent group remote-input | cut -d: -f3)"
+test -n "$remote_input_gid"
 install -d -m 0755 /usr/local/libexec/remote-input-bridge /etc/remote-input-bridge
 install -m 0755 "$receiver" /usr/local/libexec/remote-input-bridge/remote-input-receiver
 install -m 0644 receiver.toml /etc/remote-input-bridge/receiver.toml
-install -m 0644 remote-input-ydotoold.service /etc/systemd/system/remote-input-ydotoold.service
+sed "s/__REMOTE_INPUT_GID__/$remote_input_gid/g" \
+  remote-input-ydotoold.service > /etc/systemd/system/remote-input-ydotoold.service
+chmod 0644 /etc/systemd/system/remote-input-ydotoold.service
 systemctl daemon-reload
 systemctl enable --now remote-input-ydotoold.service
 echo "Installed receiver and ydotoold unit. Add the SSH user to group 'remote-input',"
