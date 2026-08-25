@@ -29,4 +29,3 @@ Register-ScheduledTask -TaskName "Remote Input Bridge" -Action $action -Trigger 
 
 Write-Host "Installed Remote Input Bridge in $installDir"
 Write-Host "Review $configTarget, then start it with: Start-ScheduledTask -TaskName 'Remote Input Bridge'"
-

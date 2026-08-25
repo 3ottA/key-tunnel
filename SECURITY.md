@@ -22,4 +22,3 @@ and include reproduction steps, affected versions, and the expected impact.
 - Run only on a trusted LAN or through a trusted VPN.
 - Never expose the receiver as an unrestricted shell command.
 - Never commit private keys, real hostnames, LAN addresses, usernames, or logs.
-
