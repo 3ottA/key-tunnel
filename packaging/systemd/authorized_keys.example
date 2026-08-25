@@ -1,0 +1,2 @@
+# Replace the public key at the end. Keep this entry on one physical line.
+restrict,command="/usr/local/libexec/remote-input-bridge/remote-input-receiver --config /etc/remote-input-bridge/receiver.toml" ssh-ed25519 AAAA_REPLACE_WITH_DEDICATED_PUBLIC_KEY remote-input-bridge

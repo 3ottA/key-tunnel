@@ -1,0 +1,15 @@
+[workspace]
+members = ["crates/protocol", "crates/windows-client", "crates/linux-receiver"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/3ottA/key-tunnel"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = true
+panic = "abort"

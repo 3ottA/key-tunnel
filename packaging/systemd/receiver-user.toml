@@ -1,0 +1,2 @@
+ydotool_socket = "/run/user/1000/.ydotool_socket"
+max_events_per_second = 2000

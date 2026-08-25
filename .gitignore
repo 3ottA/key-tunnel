@@ -1,0 +1,6 @@
+/target/
+*.log
+*.status.json
+.idea/
+.vscode/
+
