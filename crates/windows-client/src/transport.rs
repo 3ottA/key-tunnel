@@ -88,6 +88,8 @@ fn connect(config: &Config) -> Result<Session, String> {
         "-o",
         "BatchMode=yes",
         "-o",
+        "IdentityFile=none",
+        "-o",
         "IdentitiesOnly=yes",
         "-o",
         "StrictHostKeyChecking=yes",
